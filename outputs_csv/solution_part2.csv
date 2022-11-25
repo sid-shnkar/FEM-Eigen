@@ -1,0 +1,6 @@
+Node number, Analytical Solution, Numerical Solution, Error
+0,1.98042e-05,1.95918e-05,2.124e-07
+1,8.21949e-06,8.16327e-06,5.622e-08
+2,0,0,0
+
+RMS Error: 1.26852e-07

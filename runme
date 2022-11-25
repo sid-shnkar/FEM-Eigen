@@ -1,0 +1,37 @@
+make -f Makefile
+echo "Enter the problem number (1 or 2)"
+read problemNo
+echo "Enter the P (load) value"
+read pValue
+echo "Enter the A0 (constant in area function) value"
+read a0Value
+echo "Enter the L(length of rod) value"
+read lValue
+echo "Enter the E (Young's Modulus) value"
+read eValue
+echo "Enter the N (no. of elements for FEM) value"
+read nValue
+
+if [[ $problemNo -eq 1 ]]
+then
+  bin/analytical1.out $pValue $a0Value $lValue $eValue $nValue
+  bin/numerical1.out $pValue $a0Value $lValue $eValue $nValue
+  mv "analytical1.csv" outputs_csv/
+  mv "numerical1.csv" outputs_csv/
+  bin/solution_part1.out
+  cp solution_part1.csv file.txt
+  mv "solution_part1.csv" outputs_csv/
+  echo "file.txt created successfully for problem no. 1 !!"
+elif [[ $problemNo -eq 2 ]]
+then
+  bin/analytical2.out $pValue $a0Value $lValue $eValue $nValue
+  bin/numerical2.out $pValue $a0Value $lValue $eValue $nValue
+  mv "analytical2.csv" outputs_csv/
+  mv "numerical2.csv" outputs_csv/
+  bin/solution_part2.out
+  cp solution_part2.csv file.txt
+  mv "solution_part2.csv" outputs_csv/
+  echo "file.txt created successfully for problem no. 2 !!"
+else
+  echo "Error: Please enter a valid problem number(1 or 2)"
+fi
